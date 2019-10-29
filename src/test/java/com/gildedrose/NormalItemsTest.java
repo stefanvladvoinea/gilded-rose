@@ -51,7 +51,7 @@ public class NormalItemsTest {
             if (item.sellIn >= 0) {
                 assertEquals(--initialQuality, item.quality);
             } else {
-                assertEquals(Math.max(initialQuality = initialQuality - 2, 0), item.quality);
+                assertEquals(Math.max(initialQuality -= 2, 0), item.quality);
             }
         }
     }

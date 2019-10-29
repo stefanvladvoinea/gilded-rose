@@ -51,9 +51,9 @@ public class BackstagePassesTest {
             if (item.sellIn > 10) {
                 assertEquals(++initialQuality, item.quality);
             } else if (item.sellIn > 5) {
-                assertEquals(Math.min(initialQuality = initialQuality + 2, 50), item.quality);
+                assertEquals(Math.min(initialQuality += 2, 50), item.quality);
             } else if (item.sellIn > 0) {
-                assertEquals(Math.min(initialQuality = initialQuality + 3, 50), item.quality);
+                assertEquals(Math.min(initialQuality += 3, 50), item.quality);
             } else if (item.sellIn < 0) {
                 assertEquals(0, item.quality);
             }

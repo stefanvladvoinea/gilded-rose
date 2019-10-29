@@ -51,7 +51,7 @@ public class AgedBrieTest {
             if (item.sellIn >= 0) {
                 assertEquals(++initialQuality, item.quality);
             } else {
-                assertEquals(Math.min(initialQuality = initialQuality + 2, 50), item.quality);
+                assertEquals(Math.min(initialQuality += 2, 50), item.quality);
             }
         }
     }

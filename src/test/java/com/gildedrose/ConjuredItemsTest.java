@@ -51,7 +51,7 @@ public class ConjuredItemsTest {
             if (item.sellIn >= 0) {
                 assertEquals(initialQuality -= 2, item.quality);
             } else {
-                assertEquals(Math.max(initialQuality = initialQuality - 4, 0), item.quality);
+                assertEquals(Math.max(initialQuality -= 4, 0), item.quality);
             }
         }
     }
