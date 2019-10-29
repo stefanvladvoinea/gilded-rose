@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.gildedrose.Item;
+import com.gildedrose.processor.items.SulfurasItem;
 
 /**
  * Item processor for Sulfuras items
@@ -15,10 +16,8 @@ class SulfurasItemProcessor extends ItemProcessor {
 
     private final static Logger log = LoggerFactory.getLogger(SulfurasItemProcessor.class);
 
-    public final static String LABEL = "Sulfuras, Hand of Ragnaros";
-
     SulfurasItemProcessor() {
-        super(LABEL);
+        super(SulfurasItem.LABEL);
     }
 
     @Override

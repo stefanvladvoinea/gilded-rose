@@ -7,6 +7,8 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.gildedrose.processor.items.BackstagePassItem;
+
 public class BackstagePassesTest {
 
     private static final Logger log = LoggerFactory.getLogger(BackstagePassesTest.class);
@@ -15,7 +17,7 @@ public class BackstagePassesTest {
     public void qualityIncremenetsOneEachDay() {
         log.info("Test if backstage pass items quality increments with one unit if sell in is greater than 10");
         int initialQuality = 10;
-        Item item = new Item("Backstage passes to a TAFKAL80ETC concert", 20, initialQuality);
+        Item item = new BackstagePassItem(20, initialQuality);
         Item[] items = new Item[] { item };
         GildedRose app = new GildedRose(items);
         while (item.sellIn > 11) {
@@ -28,7 +30,7 @@ public class BackstagePassesTest {
     @Test
     public void qualityStaysPositive() {
         log.info("Test if backstage pass items quality is always positive");
-        Item item = new Item("Backstage passes to a TAFKAL80ETC concert", 10, 5);
+        Item item = new BackstagePassItem(10, 5);
         Item[] items = new Item[] { item };
         GildedRose app = new GildedRose(items);
         while (item.sellIn > -10) {
@@ -42,7 +44,7 @@ public class BackstagePassesTest {
     public void qualityIncrementsFast() {
         log.info("Test if backstage pass items quality increments with 2 units after the sellIn is between 10 and 5" + " and by 3 units after");
         int initialQuality = 20;
-        Item item = new Item("Backstage passes to a TAFKAL80ETC concert", 15, initialQuality);
+        Item item = new BackstagePassItem(15, initialQuality);
         Item[] items = new Item[] { item };
         GildedRose app = new GildedRose(items);
         while (item.sellIn > -20) {
@@ -51,9 +53,9 @@ public class BackstagePassesTest {
             if (item.sellIn > 10) {
                 assertEquals(++initialQuality, item.quality);
             } else if (item.sellIn > 5) {
-                assertEquals(Math.min(initialQuality = initialQuality + 2, 50), item.quality);
+                assertEquals(Math.min(initialQuality += 2, 50), item.quality);
             } else if (item.sellIn > 0) {
-                assertEquals(Math.min(initialQuality = initialQuality + 3, 50), item.quality);
+                assertEquals(Math.min(initialQuality += 3, 50), item.quality);
             } else if (item.sellIn < 0) {
                 assertEquals(0, item.quality);
             }

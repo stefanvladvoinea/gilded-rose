@@ -4,20 +4,20 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.gildedrose.Item;
-import com.gildedrose.processor.items.NormalItem;
+import com.gildedrose.processor.items.ConjuredItem;
 
 /**
- * Item processor for normal items (default)
+ * Item processor for conjured items
  * 
  * @author stefan
  *
  */
-class NormalItemProcessor extends ItemProcessor {
+class ConjuredItemProcessor extends ItemProcessor {
 
-    private final static Logger log = LoggerFactory.getLogger(NormalItemProcessor.class);
+    private final static Logger log = LoggerFactory.getLogger(ConjuredItemProcessor.class);
 
-    NormalItemProcessor() {
-        super(NormalItem.LABEL);
+    ConjuredItemProcessor() {
+        super(ConjuredItem.LABEL);
     }
 
     @Override
@@ -25,11 +25,11 @@ class NormalItemProcessor extends ItemProcessor {
         item.sellIn--;
         log.debug("Sell in decreased {}", item.sellIn);
         if (item.sellIn >= 0) {
-            item.quality = Math.max(--item.quality, 0);
-            log.debug("Quality decreased by 1 {}", item.quality);
-        } else {
             item.quality = Math.max(item.quality -= 2, 0);
             log.debug("Quality decreased by 2 {}", item.quality);
+        } else {
+            item.quality = Math.max(item.quality -= 4, 0);
+            log.debug("Quality decreased by 4 {}", item.quality);
         }
     }
 
