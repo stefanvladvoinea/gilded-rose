@@ -18,7 +18,7 @@ public class BackstagePassesTest {
         Item item = new Item("Backstage passes to a TAFKAL80ETC concert", 20, initialQuality);
         Item[] items = new Item[] { item };
         GildedRose app = new GildedRose(items);
-        while (item.sellIn > 10) {
+        while (item.sellIn > 11) {
             app.updateQuality();
             log.debug("Item: {}", item);
             assertEquals(++initialQuality, item.quality);
@@ -42,17 +42,17 @@ public class BackstagePassesTest {
     public void qualityIncrementsFast() {
         log.info("Test if backstage pass items quality increments with 2 units after the sellIn is between 10 and 5" + " and by 3 units after");
         int initialQuality = 20;
-        Item item = new Item("Backstage passes to a TAFKAL80ETC concert", 5, initialQuality);
+        Item item = new Item("Backstage passes to a TAFKAL80ETC concert", 15, initialQuality);
         Item[] items = new Item[] { item };
         GildedRose app = new GildedRose(items);
         while (item.sellIn > -20) {
             app.updateQuality();
             log.debug("Item: {}", item);
-            if (item.sellIn >= 10) {
+            if (item.sellIn > 10) {
                 assertEquals(++initialQuality, item.quality);
-            } else if (item.sellIn >= 5) {
+            } else if (item.sellIn > 5) {
                 assertEquals(Math.min(initialQuality = initialQuality + 2, 50), item.quality);
-            } else if (item.sellIn >= 0) {
+            } else if (item.sellIn > 0) {
                 assertEquals(Math.min(initialQuality = initialQuality + 3, 50), item.quality);
             } else if (item.sellIn < 0) {
                 assertEquals(0, item.quality);
