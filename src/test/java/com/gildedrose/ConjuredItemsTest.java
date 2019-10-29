@@ -7,6 +7,8 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.gildedrose.processor.items.ConjuredItem;
+
 public class ConjuredItemsTest {
 
     private static final Logger log = LoggerFactory.getLogger(ConjuredItemsTest.class);
@@ -15,7 +17,7 @@ public class ConjuredItemsTest {
     public void qualityDecrementsOneEachDay() {
         log.info("Test if conjured items quality decrements with one unit");
         int initialQuality = 10;
-        Item item = new Item("Conjured", 10, initialQuality);
+        Item item = new ConjuredItem(10, initialQuality);
         Item[] items = new Item[] { item };
         GildedRose app = new GildedRose(items);
         while (item.quality > 0) {
@@ -28,7 +30,7 @@ public class ConjuredItemsTest {
     @Test
     public void qualityStaysPositive() {
         log.info("Test if conjured items quality is always positive");
-        Item item = new Item("Conjured", 10, 5);
+        Item item = new ConjuredItem(10, 5);
         Item[] items = new Item[] { item };
         GildedRose app = new GildedRose(items);
         while (item.sellIn > -10) {
@@ -42,7 +44,7 @@ public class ConjuredItemsTest {
     public void qualityDecremetsTwiceAsFast() {
         log.info("Test if conjured items quality decrements with 2 units after the sellIn is below 0");
         int initialQuality = 20;
-        Item item = new Item("Conjured", 5, initialQuality);
+        Item item = new ConjuredItem(5, initialQuality);
         Item[] items = new Item[] { item };
         GildedRose app = new GildedRose(items);
         while (item.quality > 0) {

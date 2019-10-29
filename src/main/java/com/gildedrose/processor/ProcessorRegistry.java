@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.gildedrose.Item;
+import com.gildedrose.processor.items.NormalItem;
 
 /**
  * Keep track of item processors
@@ -51,7 +52,7 @@ public abstract class ProcessorRegistry {
         ItemProcessor itemProcessor = processorsMap.get(item.name);
         if (itemProcessor == null) {
             log.debug("No dedicated processor for item {}, falling back to default one", item);
-            itemProcessor = processorsMap.get(NormalItemProcessor.LABEL);
+            itemProcessor = processorsMap.get(NormalItem.LABEL);
         }
         log.debug("Selected processor {}", itemProcessor);
         return itemProcessor;

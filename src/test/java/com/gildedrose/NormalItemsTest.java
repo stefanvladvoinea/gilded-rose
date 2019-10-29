@@ -7,6 +7,8 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.gildedrose.processor.items.NormalItem;
+
 public class NormalItemsTest {
 
     private static final Logger log = LoggerFactory.getLogger(NormalItemsTest.class);
@@ -15,7 +17,7 @@ public class NormalItemsTest {
     public void qualityDecrementsOneEachDay() {
         log.info("Test if normal items quality decrements with one unit");
         int initialQuality = 10;
-        Item item = new Item("NormalItem", 10, initialQuality);
+        Item item = new NormalItem(10, initialQuality);
         Item[] items = new Item[] { item };
         GildedRose app = new GildedRose(items);
         while (item.quality > 0) {
@@ -28,7 +30,7 @@ public class NormalItemsTest {
     @Test
     public void qualityStaysPositive() {
         log.info("Test if normal items quality is always positive");
-        Item item = new Item("NormalItem", 10, 5);
+        Item item = new NormalItem(10, 5);
         Item[] items = new Item[] { item };
         GildedRose app = new GildedRose(items);
         while (item.sellIn > -10) {
@@ -42,7 +44,7 @@ public class NormalItemsTest {
     public void qualityDecremetsTwiceAsFast() {
         log.info("Test if normal items quality decrements with 2 units after the sellIn is below 0");
         int initialQuality = 20;
-        Item item = new Item("NormalItem", 5, initialQuality);
+        Item item = new NormalItem(5, initialQuality);
         Item[] items = new Item[] { item };
         GildedRose app = new GildedRose(items);
         while (item.quality > 0) {

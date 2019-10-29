@@ -7,6 +7,8 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.gildedrose.processor.items.AgedBrieItem;
+
 public class AgedBrieTest {
 
     private static final Logger log = LoggerFactory.getLogger(AgedBrieTest.class);
@@ -15,7 +17,7 @@ public class AgedBrieTest {
     public void qualityIncremenetsOneEachDay() {
         log.info("Test if aged brie items quality increments with one unit");
         int initialQuality = 10;
-        Item item = new Item("Aged Brie", 10, initialQuality);
+        Item item = new AgedBrieItem(10, initialQuality);
         Item[] items = new Item[] { item };
         GildedRose app = new GildedRose(items);
         while (item.sellIn > 0) {
@@ -28,7 +30,7 @@ public class AgedBrieTest {
     @Test
     public void qualityStaysPositive() {
         log.info("Test if aged brie items quality is always positive");
-        Item item = new Item("Aged Brie", 10, 5);
+        Item item = new AgedBrieItem(10, 5);
         Item[] items = new Item[] { item };
         GildedRose app = new GildedRose(items);
         while (item.sellIn > -10) {
@@ -42,7 +44,7 @@ public class AgedBrieTest {
     public void qualityIncrementsTwiceAsFast() {
         log.info("Test if aged brie items quality increments with 2 units after the sellIn is below 0 but never goes over 50");
         int initialQuality = 20;
-        Item item = new Item("Aged Brie", 5, initialQuality);
+        Item item = new AgedBrieItem(5, initialQuality);
         Item[] items = new Item[] { item };
         GildedRose app = new GildedRose(items);
         while (item.sellIn > -20) {

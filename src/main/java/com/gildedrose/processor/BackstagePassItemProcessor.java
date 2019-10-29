@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.gildedrose.Item;
+import com.gildedrose.processor.items.BackstagePassItem;
 
 /**
  * Item processor for Backstage passes items
@@ -15,10 +16,8 @@ class BackstagePassItemProcessor extends ItemProcessor {
 
     private final static Logger log = LoggerFactory.getLogger(BackstagePassItemProcessor.class);
 
-    public final static String LABEL = "Backstage passes to a TAFKAL80ETC concert";
-
     BackstagePassItemProcessor() {
-        super(LABEL);
+        super(BackstagePassItem.LABEL);
     }
 
     @Override

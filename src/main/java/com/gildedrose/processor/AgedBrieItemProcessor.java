@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.gildedrose.Item;
+import com.gildedrose.processor.items.AgedBrieItem;
 
 /**
  * Item processor for Aged Brie items
@@ -15,10 +16,8 @@ class AgedBrieItemProcessor extends ItemProcessor {
 
     private final static Logger log = LoggerFactory.getLogger(AgedBrieItemProcessor.class);
 
-    public final static String LABEL = "Aged Brie";
-
     AgedBrieItemProcessor() {
-        super(LABEL);
+        super(AgedBrieItem.LABEL);
     }
 
     @Override

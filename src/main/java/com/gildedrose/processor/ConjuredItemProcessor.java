@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.gildedrose.Item;
+import com.gildedrose.processor.items.ConjuredItem;
 
 /**
  * Item processor for conjured items
@@ -15,10 +16,8 @@ class ConjuredItemProcessor extends ItemProcessor {
 
     private final static Logger log = LoggerFactory.getLogger(ConjuredItemProcessor.class);
 
-    public final static String LABEL = "Conjured";
-
     ConjuredItemProcessor() {
-        super(LABEL);
+        super(ConjuredItem.LABEL);
     }
 
     @Override

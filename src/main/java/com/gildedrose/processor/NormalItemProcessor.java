@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.gildedrose.Item;
+import com.gildedrose.processor.items.NormalItem;
 
 /**
  * Item processor for normal items (default)
@@ -15,10 +16,8 @@ class NormalItemProcessor extends ItemProcessor {
 
     private final static Logger log = LoggerFactory.getLogger(NormalItemProcessor.class);
 
-    public final static String LABEL = "NormalItem";
-
     NormalItemProcessor() {
-        super(LABEL);
+        super(NormalItem.LABEL);
     }
 
     @Override
