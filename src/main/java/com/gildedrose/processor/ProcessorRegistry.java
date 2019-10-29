@@ -25,6 +25,7 @@ public abstract class ProcessorRegistry {
         registerProcessor(AgedBrieItemProcessor.class);
         registerProcessor(SulfurasItemProcessor.class);
         registerProcessor(BackstagePassItemProcessor.class);
+        registerProcessor(ConjuredItemProcessor.class);
     }
 
     private static void registerProcessor(Class<? extends ItemProcessor> processorClass) {
